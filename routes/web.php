@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GroupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login-process', [AuthController::class, 'loginProcess']);
@@ -26,9 +27,11 @@ Route::post('register-process', [AuthController::class, 'registerProcess']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('login')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('layout.app');
+    Route::get('/', function () {
+        return view('dashboard.index');
     });
+    // Route::get('groups/create', [GroupController::class, 'create']);
+    Route::resource('groups', GroupController::class);
 });
 
 

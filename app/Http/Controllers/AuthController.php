@@ -30,7 +30,7 @@ class AuthController extends Controller
                 return redirect()->back()->with('message', 'Wrong Password !');
             } else {
                 Session::put('user', $user);
-                return redirect('dashboard');
+                return redirect('/');
             }
         }
     }
