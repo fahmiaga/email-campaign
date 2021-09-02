@@ -15,7 +15,6 @@ class CreateGroupListsTable extends Migration
     {
         Schema::create('group_lists', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
             $table->integer('group_id');
             $table->string('email');
             $table->timestamps();

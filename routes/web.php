@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\GroupListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +34,14 @@ Route::middleware('login')->group(function () {
     });
     // Route::get('groups/create', [GroupController::class, 'create']);
     Route::resource('groups', GroupController::class);
+
+    Route::resource('group-list', GroupListController::class);
+    Route::get('group-list/create/{id}', [GroupListController::class, 'create']);
+    Route::post('group-list/store/{id}', [GroupListController::class, 'store']);
+
+    Route::resource('email', EmailController::class);
+
+    Route::post('email/send-email', [EmailController::class, 'sendEmail']);
 });
 
 

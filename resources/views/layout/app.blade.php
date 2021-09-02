@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
     <title>@yield('title')</title>
 
@@ -23,7 +24,7 @@
 
     <!-- Custom styles for this page -->
     <link href="{{ asset('assets/sbadmin') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+    @stack('styles')
 </head>
 
 <body id="page-top">
@@ -60,7 +61,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Email Campaign {{ now()->year }}</span>
                     </div>
                 </div>
             </footer>
@@ -97,10 +98,11 @@
         </div>
     </div>
 
+
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('assets/sbadmin') }}/vendor/jquery/jquery.min.js"></script>
     <script src="{{ asset('assets/sbadmin') }}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    @stack('scripts')
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('assets/sbadmin') }}/vendor/jquery-easing/jquery.easing.min.js"></script>
 
@@ -115,6 +117,8 @@
 
     {{-- custom js --}}
     <script src="{{ asset('assets/sbadmin') }}/js/custom.js"></script>
+    <script src="{{ asset('assets/sbadmin') }}/js/multi-select.js"></script>
+
 </body>
 
 </html>

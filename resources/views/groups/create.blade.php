@@ -29,10 +29,10 @@
                     <tr>
                         <td>
                             <input type="text" name="email[]" placeholder="Enter Email"
-                                class="form-control {{ $errors->has('group_name') ? 'is-invalid' : '' }} " />
-                            @if ($errors->has('group_name'))
+                                class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }} " />
+                            @if ($errors->has('email'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('group_name') }}
+                                    {{ $errors->first('email') }}
                                 </div>
                             @endif
                         </td>

@@ -9,5 +9,5 @@ class GroupList extends Model
 {
     use HasFactory;
     protected $table = 'group_lists';
-    protected $fillable = ['user_id', 'group_id', 'email'];
+    protected $fillable = ['group_id', 'email'];
 }

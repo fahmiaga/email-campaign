@@ -16,8 +16,9 @@ class GroupController extends Controller
      */
     public function index()
     {
+        $id = Session::get('user')->id;
         $data = [
-            'groups' => Group::all()
+            'groups' => Group::where('user_id', $id)->get()
         ];
         return view('groups.index', $data);
     }
@@ -42,17 +43,17 @@ class GroupController extends Controller
     {
         $request->validate([
             'group_name' => 'required',
-            'email.*' => 'required'
+            'email.*' => 'required|unique:group_lists,email'
         ]);
 
         $group = Group::create([
             'group_name' => $request->group_name,
+            'user_id' => Session::get('user')->id,
         ]);
 
         $count = count($request->email);
         for ($i = 0; $i < $count; $i++) {
             GroupList::create([
-                'user_id' => Session::get('user')->id,
                 'group_id' => $group->id,
                 'email' => $request->email[$i]
             ]);
