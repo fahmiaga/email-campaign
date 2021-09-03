@@ -16,13 +16,39 @@
                 @csrf
                 <div class="form-group col-md-4">
                     <label for="inputState">Groups</label>
-                    <select id="category" class="selectpicker form-control" name="group[]" multiple data-live-search="true">
+                    <select id="category" class="selectpicker form-control {{ $errors->has('group') ? 'is-invalid' : '' }}"
+                        name="group[]" multiple data-live-search="true">
                         @foreach ($groups as $group)
                             <option value="{{ $group->id }}">{{ $group->group_name }}</option>
                         @endforeach
                     </select>
-                    <button class="btn btn-primary mt-2">Submit</button>
+                    @if ($errors->has('group'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('group') }}
+                        </div>
+                    @endif
                 </div>
+                <div class=" form-group col-md-4">
+                    <label for="">Subject</label>
+                    <input type="text" class="form-control {{ $errors->has('subject') ? 'is-invalid' : '' }}"
+                        placeholder="Subject..." name="subject">
+                    @if ($errors->has('subject'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('subject') }}
+                        </div>
+                    @endif
+                </div>
+                <div class=" form-group col-md-4">
+                    <label for="">Body</label>
+                    <textarea type="text" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}"
+                        placeholder="Body..." name="body"></textarea>
+                    @if ($errors->has('body'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('body') }}
+                        </div>
+                    @endif
+                </div>
+                <button class="btn btn-primary mt-2 ml-3">Submit</button>
             </form>
         </div>
     </div>

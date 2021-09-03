@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendEmailJob;
 use App\Mail\SendMail;
 use App\Models\Group;
 use App\Models\GroupList;
@@ -100,6 +101,13 @@ class EmailController extends Controller
     }
     public function sendEmail(Request $request)
     {
+
+        $request->validate([
+            'group' => 'required',
+            'subject' => 'required',
+            'body' => 'required'
+        ]);
+
         $email_list = [];
         foreach ($request->group as $list) {
             $email_coll = GroupList::where('group_id', $list)->get();
@@ -108,10 +116,13 @@ class EmailController extends Controller
             }
         };
 
-        $length = count($email_list);
-        for ($i = 0; $i < $length; $i++) {
-            Mail::to($email_list[$i])->send(new SendMail());
-        }
+        $detail = [
+            'email' => $email_list,
+            'subject' => $request->subject,
+            'body' => $request->body
+        ];
+        dispatch(new SendEmailJob($detail));
+
         return redirect()->back()->with('message', 'Email has been sent');
     }
 }

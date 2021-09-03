@@ -16,11 +16,11 @@ class SendMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $data;
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
-
     /**
      * Build the message.
      *
@@ -30,9 +30,9 @@ class SendMail extends Mailable
     {
         return $this->from('emailcampaign@mail.com')
             ->view('mailTemplate.mail_1')
+            ->subject($this->data['subject'])
             ->with([
-                'nama' => 'Fahmi Aga',
-                'gender' => 'Lakik'
+                'body' => $this->data['body'],
             ]);
     }
 }
