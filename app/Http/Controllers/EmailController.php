@@ -6,6 +6,7 @@ use App\Jobs\SendEmailJob;
 use App\Mail\SendMail;
 use App\Models\Group;
 use App\Models\GroupList;
+use App\Models\Template;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -21,7 +22,8 @@ class EmailController extends Controller
     {
         $id = Session::get('user')->id;
         $data = [
-            'groups' => Group::where('user_id', $id)->get()
+            'groups' => Group::where('user_id', $id)->get(),
+            'templates' => Template::where('user_id', $id)->get()
         ];
         return view('email.index', $data);
     }
@@ -101,7 +103,6 @@ class EmailController extends Controller
     }
     public function sendEmail(Request $request)
     {
-
         $request->validate([
             'group' => 'required',
             'subject' => 'required',
@@ -116,10 +117,14 @@ class EmailController extends Controller
             }
         };
 
+        $template = Template::where('id', $request->template)->first();
         $detail = [
             'email' => $email_list,
             'subject' => $request->subject,
-            'body' => $request->body
+            'body' => $request->body,
+            'tag' => $template->tag,
+            'banner' => $template->bg_tag,
+            'name' => $template->template_name
         ];
         dispatch(new SendEmailJob($detail));
 

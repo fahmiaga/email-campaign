@@ -26,6 +26,11 @@
             <i class="fas fa-users"></i>
             <span>Groups</span></a>
     </li>
+    <li class="nav-item {{ request()->is('template*') ? 'active' : '' }}">
+        <a class="nav-link" href="/template">
+            <i class="fas fa-palette"></i>
+            <span>Template</span></a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">

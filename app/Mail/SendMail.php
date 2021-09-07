@@ -33,6 +33,9 @@ class SendMail extends Mailable
             ->subject($this->data['subject'])
             ->with([
                 'body' => $this->data['body'],
+                'banner' => $this->data['banner'],
+                'tag' => $this->data['tag'],
+                'name' => $this->data['name']
             ]);
     }
 }

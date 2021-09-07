@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GroupListController;
+use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,8 @@ Route::middleware('login')->group(function () {
     Route::resource('email', EmailController::class);
 
     Route::post('email/send-email', [EmailController::class, 'sendEmail']);
+
+    Route::resource('template', TemplateController::class);
 });
 
 

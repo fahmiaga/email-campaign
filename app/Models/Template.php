@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Template extends Model
 {
     use HasFactory;
+    protected $table = 'templates';
+    protected $fillable = ['user_id', 'tag', 'bg_tag', 'template_name'];
 }

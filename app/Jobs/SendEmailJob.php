@@ -35,6 +35,9 @@ class SendEmailJob implements ShouldQueue
         $data = [
             'subject' => $this->detail['subject'],
             'body' => $this->detail['body'],
+            'tag' => $this->detail['tag'],
+            'banner' => $this->detail['banner'],
+            'name' => $this->detail['name']
         ];
         $length = count($this->detail['email']);
         for ($i = 0; $i < $length; $i++) {

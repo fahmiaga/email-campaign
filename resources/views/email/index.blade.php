@@ -48,6 +48,15 @@
                         </div>
                     @endif
                 </div>
+                <div class="form-group col-md-4">
+                    <label for="">Template</label>
+                    <select name="template" id="" class="form-control">
+                        <option value="">Choose a template</option>
+                        @foreach ($templates as $template)
+                            <option value={{ $template->id }}>{{ $template->template_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <button class="btn btn-primary mt-2 ml-3">Submit</button>
             </form>
         </div>
@@ -59,6 +68,6 @@
 @endpush
 
 @push('scripts')
-    $('.selectpicker').selectpicker();
+
     <script type="text/javascript" src="{{ asset('assets/multiple-select') }}/js/bootstrap-select.min.js"></script>
 @endpush

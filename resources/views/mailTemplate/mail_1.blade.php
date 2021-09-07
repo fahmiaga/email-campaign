@@ -59,6 +59,30 @@
 
         /* content end */
 
+        /* cards */
+
+        .card-wrapper {
+            width: 90%;
+            margin: 40px auto;
+            display: flex;
+            justify-content: space-evenly;
+            z-index: 3;
+        }
+
+        .card-wrapper .card-product {
+            width: 50%;
+            margin: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .card-product h1 {
+            text-align: center;
+        }
+
+        .card-product p {
+            padding-left: 10px;
+        }
+
         /* footer */
         .footer {
             width: 100%;
@@ -106,18 +130,35 @@
 <body>
 
     <div class="jumbotron">
-        <img src="https://cutewallpaper.org/21/jumbotron-background-image/new-jumbotron-background-Gold-Bond-Ultimate.png"
-            alt="" class="layout">
-
-        <h1>Welcome to our land</h1>
+        <img src="{{ $banner }}" alt="" class="layout">
+        <h1>{{ $tag }}</h1>
     </div>
 
     <div class="container">
 
-        <h2>Your title</h2>
-        <p>
-            {{ $body }}
-        </p>
+        {{ $body }}
+        {{-- {{ $template }} --}}
+
+        <div class="card-wrapper">
+            <div class="card-product">
+                <h1>Test</h1>
+                <hr>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi animi inventore ullam
+                    corrupti? Impedit repellendus minus distinctio provident natus soluta, maiores veritatis culpa
+                    perferendis alias, similique minima repudiandae, sit eligendi.
+                </p>
+            </div>
+            <div class="card-product">
+                <h1>Test</h1>
+                <hr>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi animi inventore ullam
+                    corrupti? Impedit repellendus minus distinctio provident natus soluta, maiores veritatis culpa
+                    perferendis alias, similique minima repudiandae, sit eligendi.
+                </p>
+            </div>
+        </div>
     </div>
 
     <div class="footer">
