@@ -8,6 +8,18 @@
                <!-- Topbar Navbar -->
                <ul class="navbar-nav ml-auto">
 
+                   {{-- language --}}
+                   @if (app()->getLocale() == 'id')
+                       <li class="nav-item">
+                           <a class="nav-link" href="{{ url('locale/en') }}">EN</a>
+                       </li>
+                   @endif
+                   @if (app()->getLocale() == 'en')
+                       <li class="nav-item">
+                           <a class="nav-link" href="{{ url('locale/id') }}">IND</a>
+                       </li>
+                   @endif
+
                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
 
                    <!-- Nav Item - User Information -->

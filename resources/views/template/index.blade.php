@@ -2,10 +2,10 @@
 @section('title', 'Template ')
 @section('content')
 
-    <h1 class="h3 mb-4 text-gray-800">Data Groups</h1>
+    <h1 class="h3 mb-4 text-gray-800"> @lang('translate.data_groups')</h1>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="/template/create" class="btn btn-primary">Add New Template</a>
+            <a href="/template/create" class="btn btn-primary"> @lang('translate.add_new_template')</a>
         </div>
         <div class="card-body">
             @if (session('message'))
@@ -18,15 +18,15 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Template Name</th>
-                            <th>Action</th>
+                            <th> @lang('translate.template_name')</th>
+                            <th> @lang('translate.action')</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>No</th>
-                            <th>Template Name</th>
-                            <th>Action</th>
+                            <th> @lang('translate.template_name')</th>
+                            <th> @lang('translate.action')</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -59,7 +59,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel"> @lang('translate.are_you_sure') ?</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -71,8 +71,9 @@
                             @csrf
                             <input type="hidden" name="_method" value="DELETE">
                             {{-- <button type="submit" class="btn btn-outline">{{ __('Yes') }}</button> --}}
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                            <button type="submit" class="btn btn-primary">Yes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                @lang('translate.no')</button>
+                            <button type="submit" class="btn btn-primary"> @lang('translate.yes')</button>
                         </form>
 
                     </div>

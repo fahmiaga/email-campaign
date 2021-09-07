@@ -6,6 +6,7 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GroupListController;
 use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,11 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::get('locale/{locale}', function ($locale) {
+    Session::put('locale', $locale);
+    // dd(app()->setLocale($locale));
+    return redirect()->back();
+});
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login-process', [AuthController::class, 'loginProcess']);
