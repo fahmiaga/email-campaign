@@ -29,6 +29,9 @@ Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('register-process', [AuthController::class, 'registerProcess']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
+Route::delete('unsubscribe-email/{email}', [EmailController::class, 'unsubscribe']);
+Route::get('unsubscribe/{email}', [EmailController::class, 'unsubscribeIndex']);
+
 Route::middleware('login')->group(function () {
     Route::get('/', function () {
         return view('dashboard.index');
@@ -43,7 +46,6 @@ Route::middleware('login')->group(function () {
     Route::resource('email', EmailController::class);
 
     Route::post('email/send-email', [EmailController::class, 'sendEmail']);
-
     Route::resource('template', TemplateController::class);
 });
 

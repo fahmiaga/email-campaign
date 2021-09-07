@@ -130,4 +130,16 @@ class EmailController extends Controller
 
         return redirect()->back()->with('message', 'Email has been sent');
     }
+    public function unsubscribeIndex($email)
+    {
+        $data = [
+            'email' => $email
+        ];
+        return view('email.unsubscribe', $data);
+    }
+    public function unsubscribe($email)
+    {
+        GroupList::where('email', $email)->delete();
+        return redirect()->back()->with('message', 'Successfully unsubscribed');
+    }
 }

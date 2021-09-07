@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class SendMail extends Mailable
 {
@@ -28,6 +29,7 @@ class SendMail extends Mailable
      */
     public function build()
     {
+
         return $this->from('emailcampaign@mail.com')
             ->view('mailTemplate.mail_1')
             ->subject($this->data['subject'])
@@ -35,7 +37,8 @@ class SendMail extends Mailable
                 'body' => $this->data['body'],
                 'banner' => $this->data['banner'],
                 'tag' => $this->data['tag'],
-                'name' => $this->data['name']
+                'name' => $this->data['name'],
+                'email' => $this->data['email']
             ]);
     }
 }

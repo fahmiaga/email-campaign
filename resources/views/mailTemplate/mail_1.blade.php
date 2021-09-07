@@ -45,7 +45,7 @@
             margin: 40px auto;
         }
 
-        .container h2 {
+        /* .container h2 {
             text-align: center;
             text-transform: uppercase;
             margin-bottom: 20px;
@@ -55,7 +55,7 @@
             text-indent: 50px;
             text-align: justify;
             letter-spacing: 2px;
-        }
+        } */
 
         /* content end */
 
@@ -105,21 +105,15 @@
             cursor: pointer;
         }
 
-        .form-unsub {
-            width: 30%;
-            margin: auto;
-            display: flex;
-            justify-content: center;
+        .unsub {
+            width: 100px;
+            margin: 10px auto;
         }
 
-        .form-unsub button {
-            width: 100px;
-            border: none;
+        .unsub a {
             text-decoration: none;
-            background-color: yellowgreen;
-            cursor: pointer;
-            margin-top: 15px;
-            border-radius: 5px;
+            color: aquamarine;
+            font-size: 1rem;
         }
 
         /*footer end  */
@@ -137,7 +131,7 @@
     <div class="container">
 
         {{ $body }}
-        {{-- {{ $template }} --}}
+
 
         <div class="card-wrapper">
             <div class="card-product">
@@ -170,10 +164,9 @@
             <img src="https://findicons.com/files/icons/2844/creative_blot_icons_set/512/social_media_icons_blot_icons_set_512x512_0010_linkedin.png"
                 alt="">
         </div>
-        <form action="" class="form-unsub">
-            <input type="hidden">
-            <button class="btn btn-info">Unsubscribe</button>
-        </form>
+        <div class="unsub">
+            <a href="http://127.0.0.1:8000/unsubscribe/{{ $email }}">unsubscribe</a>
+        </div>
     </div>
 
 
